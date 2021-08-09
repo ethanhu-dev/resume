@@ -14,21 +14,26 @@
 \RequirePackage{xkeyval} % key-value macros
 \RequirePackage{etoolbox} % robust commands, macros, booleans, tests
 
-\newbool{fitpagebool}
-\newbool{framepagebool}
+\newbool{fitbool}
+\newbool{framebool}
+\newbool{iconbool}
 
 %% Options
-\DeclareOptionX{fontsize}[10pt]{\def\@fontsize{#1}}
-\DeclareOptionX{fontface}[cormorantgaramond]{\def\@fontface{#1}}
-\DeclareOptionX{margin}[0.5in]{\def\@margins{margin={#1}}}
-\DeclareOptionX{fitpage}[true]{\setbool{fitpagebool}{#1}}
-\DeclareOptionX{framepage}[true]{\setbool{framepagebool}{#1}}
-\ExecuteOptionsX{fontsize,fontface,margin}
+\DeclareOptionX{fsize}[10pt]{\def\@fsize{#1}}
+\DeclareOptionX{fstyle}[cormorantgaramond]{\def\@fstyle{#1}}
+\DeclareOptionX{marg}[0.5in]{\def\@marg{margin=#1}}
+\DeclareOptionX{fit}[true]{\setbool{fitbool}{#1}}
+\DeclareOptionX{frame}[true]{\setbool{framebool}{#1}}
+\DeclareOptionX{icon}[true]{\setbool{iconbool}{#1}}
+
+%% Default Options
+\ExecuteOptionsX{fsize,fstyle,marg}
+
 \DeclareOptionX*{\PassOptionsToClass{\CurrentOption}{article}}
-\DeclareOptionX*{\ClassWarning{cvtemplate}{'\CurrentOption':Unknown}}
+\DeclareOptionX*{\ClassWarning{cvtemplate}{Unknown option: '\CurrentOption'}}
 \ProcessOptionsX*
 
-\LoadClass[\@fontsize]{article}
+\LoadClass[\@fsize]{article}
 
 \RequirePackage{ulem} % underlining without disruption
 \RequirePackage{array} % tabular and array environments
@@ -44,41 +49,46 @@
 \RequirePackage[empty]{fullpage} % suppresses page numbers and headers/footersm
 \RequirePackage[parfill]{parskip} % removes paragraph indent and sets spacing
 \RequirePackage[svgnames]{xcolor} % text colors and color names
-\RequirePackage[\@margins]{geometry} % set page margins
+\RequirePackage[\@marg]{geometry} % set page margins
 \RequirePackage[ocgcolorlinks]{hyperref} % web links and pdf configuration
 
 %%--------------------------------------------------------------------
 %%  CONSTANTS
 %%----------------------------------------------------------
 
-%% Header
+%% Text Formats
 \def\nameform         {\huge\scshape}
-\def\contform         {\normalsize\upshape}
-\def\addressicon      {\faMapMarker*~}
-\def\phoneicon        {\faPhone*~}
-\def\websiteicon      {\faGlobeAmericas~}
-\def\emailicon        {\faEnvelope~}
-\def\githubicon       {\faGithub~}
-\def\linkedinicon     {\faLinkedin~}
-\def\namespace        {\smallskip}
-\def\contsep          {~|~}
-\def\pgheaderspace    {\vspace{1pt}}
-\newbool{icons}
+\def\contform         {\large\upshape}
 
-%% Sections
 \def\secheaderform    {\large\scshape}
-\def\subheaderform    {\small\bfseries}
-\def\subsubheaderform {\small\itshape}
-\def\subdateform      {\small\bfseries}
-\def\sublocationform  {\small\itshape}
-\def\listitemform     {\small\upshape}
-\def\descitemform     {\small\upshape}
-\def\secheaderspace   {\smallskip}
-\def\seclinespace     {\medskip}
-\def\secendspace      {\smallskip}
-\def\subheaderspace   {\vspace{1pt}}
-\def\subitemsep       {3pt}
-\def\resumeitemsep    {0pt}
+\def\subheaderform    {\norms\bfseries}
+\def\subsubheaderform {\norms\itshape}
+\def\subdateform      {\norms\bfseries}
+\def\sublocationform  {\norms\itshape}
+\def\listitemform     {\norms\upshape}
+\def\descitemform     {\norms\upshape}
+
+%% Spacing
+\def\nameskip         {\smallskip}
+\def\headerskip       {\medskip}
+\def\contsep          {\enspace\;}
+\def\noiconsep        {\;\textbullet\;}
+
+\def\secheaderskip    {\smallskip}
+\def\seclineskip      {\medskip}
+\def\secendskip       {\medskip}
+\def\subheaderskip    {\vspace{1pt}}
+\def\subitemsep       {0pt}
+\def\cvitemsep        {0pt}
+
+%% icon
+\def\addressicon      {\raisebox{-0.1\height}{\faMapMarker*}\:}
+\def\phoneicon        {\raisebox{-0.1\height}{\faPhone*}\:}
+\def\websiteicon      {\raisebox{-0.1\height}{\faGlobeAmericas}\:}
+\def\emailicon        {\raisebox{-0.1\height}{\faEnvelope}\:}
+\def\githubicon       {\raisebox{-0.1\height}{\faGithub}\:}
+\def\linkedinicon     {\raisebox{-0.1\height}{\faLinkedin}\:}
+
 
 %% Other
 \def\norms{\normalsize}
@@ -88,13 +98,11 @@
 %%----------------------------
 
 %% Set Font Face
-\setmainfont{\@fontface}
+\setmainfont{\@fstyle}
 
 %% Global List Settings
 \setlist{%
-  noitemsep,%
   leftmargin=0pt,%
-  topsep=-1\parskip%
 }
 \setlist[description]{%
   itemsep=\subitemsep%
@@ -102,8 +110,11 @@
 \setlist[itemize]{%
   label=\textbullet,%
   format=\listitemform,%
-  itemsep=\resumeitemsep%
+  itemsep=\cvitemsep%
 }
+
+% Paragraph Spacing
+\setlength{\parskip}{0pt}
 
 %% Reference Settings
 \hypersetup{
@@ -144,7 +155,7 @@
 %% Resume Text Environ
 %% applies box found by findbox to all resume text
 \NewEnviron{cvtext}{%
-  \ifbool{fitpagebool}{%
+  \ifbool{fitbool}{%
     \setlength{\fboxsep}{-1\fboxrule}
     \setlength{\decrtextwidth}{0.01\textwidth}%
     \setlength{\currtextwidth}{1.1\textwidth}%
@@ -169,7 +180,7 @@
     \addtolength{\currtextwidth}{-#4}%
     \findbox{#1}{\currtextwidth}{#3}{#4}{#5}%
   \else%
-    \ifbool{framepagebool}{%
+    \ifbool{framebool}{%
       \framebox[#1#3]{%
         \hfil{\scaleto{\parbox[t]{#2}{#5}}{#3}}\hfil}%
     }{%
@@ -192,103 +203,80 @@
 \let\@github\relax
 \let\@linkedin\relax
 
-%% Set Applicant Info
-\newrobustcmd*{\name}[1]{\notblank{#1}{\def\@name{#1}}{}}
-\newrobustcmd*{\phone}[1]{\notblank{#1}{\def\@phone{#1}}{}}
-\newrobustcmd*{\address}[1]{\notblank{#1}{\def\@address{#1}}{}}
-\newrobustcmd*{\website}[1]{\notblank{#1}{\def\@website{#1}}{}}
-\newrobustcmd*{\email}[1]{\notblank{#1}{\def\@email{#1}}{}}
-\newrobustcmd*{\github}[1]{\notblank{#1}{\def\@github{#1}}{}}
-\newrobustcmd*{\linkedin}[1]{\notblank{#1}{\def\@linkedin{#1}}{}}
+%% Set Info If Not Blank
+\def\name#1{\notblank{#1}{\def\@name{#1}}{}}
+\def\phone#1{\notblank{#1}{\def\@phone{\mbox{#1}}}{}}
+\def\address#1{\notblank{#1}{\def\@address{#1}}{}}
+\def\website#1{\notblank{#1}{\def\@website{#1}}{}}
+\def\email#1{\notblank{#1}{\def\@email{#1}}{}}
+\def\github#1{\notblank{#1}{\def\@github{#1}}{}}
+\def\linkedin#1{\notblank{#1}{\def\@linkedin{#1}}{}}
 
-%% Print Name
-\newrobustcmd*{\printname}{%
+%% Print CV Contact
+%% print contact with format, icon, ref supplied by arguments if defined
+%% [5]: {<linkOption>} {<contForm>} {<contIcon>} {<contItem>} {<contSep>}
+\newrobustcmd*{\cvcontact}[5][]{%
+  \ifundef{#4}{}{%
+    \ifbool{iconbool}{}{%
+      \def\contsep{\noiconsep}%
+      \def#3{}%
+    }%
+    \notblank{#1}{%
+      \IfSubStringInString{@}{#4}{%
+        {#2#3\href{mailto:#4}{#4}#5}%
+      }{%
+        {#2#3\href{https://#4}{#4}#5}%
+      }%
+    }{%
+      {#2#3#4#5}%
+    }%
+  }%
+}
+
+%% Print CV Name
+\newrobustcmd*{\cvname}{%
   \begin{centering}%
     \hfil{\nameform\@name}\hfil%
-    \namespace\break%
+    \nameskip\par%
   \end{centering}%
 }
 
-%% Print Contact
-%% print contact with format, icon, ref supplied by arguments
-%% [4]: {<contactFormat>} {<contactIcon>} {<contactItem>} {<contactSepSpace>}
-\newrobustcmd*{\printcontact}[4]{%
-  \ifundef{#3}{}{%
-    \ifbool{icons}{
-      \IfSubStringInString{@}{#3}{%
-        {#1#2\href{mailto:#3}{#3}#4}%
-      }{%
-        \IfSubStringInString{.com}{#3}{%
-          {#1#2\href{https://#3}{#3}#4}%
-        }{%
-          {#1#2#3#4}%
-        }%
-      }%
-    }{%
-      \IfSubStringInString{@}{#3}{%
-        {#1\href{mailto:#3}{#3}#4}%
-      }{%
-        \IfSubStringInString{.com}{#3}{%
-          {#1\href{https://#3}{#3}#4}%
-        }{%
-          {#1#3#4}%
-        }%
-      }%
-    }%
-  }
-}
-
-%% Print Page Header
-%% prints page header with specified number of columns
-%% [1]: {<numberColumns>}
-\newrobustcmd*{\printcvheader}[1]{%
-  \ifnumcomp{#1}{>}{1}{%
-    \begin{center}%
-      \begin{multicols}{#1}[\printname]%
-        \printcontact{\contform}{\phoneicon}{\@phone}{}%
-        \printcontact{\contform}{\addressicon}{\@address}{}%
-        \printcontact{\contform}{\websiteicon}{\@website}{}%
-        \printcontact{\contform}{\emailicon}{\@email}{}%
-        \printcontact{\contform}{\githubicon}{\@github}{}%
-        \printcontact{\contform}{\linkedinicon}{\@linkedin}{}%
-      \end{multicols}%
-    \end{center}%
-  }{%
-    \printname%
-    \centerline{%
-      \printcontact{\contform}{\phoneicon}{\@phone}{\contsep}%
-      % \printcontact{\contform}{\addressicon}{\@address}{\contsep}%
-      % \printcontact{\contform}{\websiteicon}{\@website}{\contsep}%
-      \printcontact{\contform}{\emailicon}{\@email}{\contsep}%
-      % \printcontact{\contform}{\githubicon}{\@github}{\contsep}%
-      \printcontact{\contform}{\linkedinicon}{\@linkedin}{}%
-    }%
-  }%
-  \pgheaderspace%
+%% Print CV Header
+%% prints formatted page header
+\newrobustcmd*{\cvheader}{%
+  \cvname%
+  \centerline{%
+    \cvcontact{\contform}{\phoneicon}{\@phone}{\contsep}%
+    \cvcontact{\contform}{\addressicon}{\@address}{\contsep}%
+    \cvcontact[l]{\contform}{\websiteicon}{\@website}{\contsep}%
+    \cvcontact[l]{\contform}{\emailicon}{\@email}{\contsep}%
+    \cvcontact[l]{\contform}{\githubicon}{\@github}{}%
+    \cvcontact[l]{\contform}{\linkedinicon}{\@linkedin}{}%
+  }\headerskip%
 }
 
 %%----------------------------------------------------------
 %% SECTION
 %%----------------------------
 
-%% Section Environment
+%% CV Section Environment
 %% defines section environment, contains formatted subsections and resume items
 %% [1]: {<sectionName>}
 \newenvironment*{cvsection}[1]{%
   {\secheaderform#1}%
-  \secheaderspace%
-  \hrule\seclinespace%
+  \secheaderskip%
+  \hrule\seclineskip%
   \begin{description}%
 }{%
   \end{description}%
-  \secendspace%
+  \secendskip%
 }
 
 %%----------------------------------------------------------
 %% SUBSECTION
 %%----------------------------
 
-%% Subsection Environment
+%% CV Subsection Environment
 %% defines subsection environment, contains formatted subheaders and resumeitems
 %% [4]: {<subHeader>} {<subSubHeader>} {<subDate>} {<subLocation>}
 \newenvironment*{cvsubsection}[4]{%
@@ -297,12 +285,11 @@
     {\subsubheaderform#3}\hfill{\sublocationform#4}%
   }{%
     \notblank{#3}{%
-      \item[\subheaderform#1]|~~{\subsubheaderform#2}\hfill{\subdateform#3}%
+      \item[\subheaderform#1]|\;\;{\subsubheaderform#2}\hfill{\subdateform#3}%
     }{%
       \item[\subheaderform#1]\hfill{\subdateform#2}%
     }%
-  }%
-  \subheaderspace%
+  }\subheaderskip%
   \begin{itemize}%
 }{%
   \end{itemize}%
@@ -330,7 +317,7 @@
 %%      \itemsep, \parsep, \topsep, \parskip, \partopsep = 0
 %%      nosep option kills all vertical spacing
 %%
-%% Additional Icons
+%% Additional icon
 %%    phone:    \faPhone(*),\faMobile(*)
 %%    address:  \faMapMarker(*),\faMapPin
 %%    website:  \faGlobe, \faGlobeAsia, \faGlobeEurope, \faGlobeAfrica

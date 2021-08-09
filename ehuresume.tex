@@ -15,22 +15,24 @@
 %%
 %% Option    Key         Value       Default    Description
 %%
-%% Margins:  margin      0.5in       default    Document margins for all sides
+%% Margins:  marg        0.5in       default    Document margins for all sides
 %%                       1.0in
 %%                       1.5in
 %%
-%% Autosize: fitpage     true                   Autosize all text to one page
+%% Autosize: fit         true                   Autosize all text to one page
 %%                       false       default    May result in small text
 %%
-%%           framepage   true                   Set visible box around text
+%%           frame       true                   Set visible box around text
 %%                       false       default    Requires fitpage to be on
 %%
+%% Icons:    icon        true                   Turns on header icons
+%%                       false       default
 %%
-%% Font:     fontsize    10pt                   Standard font sizes
-%%                       11pt        default
+%% Font:     fsize       10pt        default    Standard font sizes
+%%                       11pt
 %%                       12pt
 %%
-%%           fontface    cormorant   default    Font faces require LuaTeX
+%%           fstyle      cormorant   default    Font faces require LuaTeX
 %%                         garamond
 %%                       timesnew
 %%                         roman
@@ -43,10 +45,10 @@
 %%                       garamond
 %%                       roboto
 %%
-%% all options in [key=value] form, if value not specified [key=default]
+%% all options in [key=value] form, if value not specified [value=default]
 %%
 
-\documentclass[fontsize=11pt,fontface=cormorantgaramond,fitpage]{cvtemplate}
+\documentclass[fit]{cvtemplate}
 
 \usepackage{amsmath}
 
@@ -54,11 +56,11 @@
 
 \name{Ethan Hu}
 \phone{(408) 724-7453}
-% \address{}
-% \website{}
-\email{ethu@ucsc.edu}
-\linkedin{linkedin.com/in/ethu}
-% \github{github.com/ethanhu99}
+\address{}
+\website{ethan-hu.com}
+\email{ehu@ethan-hu.com}
+% \linkedin{linkedin.com/in/ethanhu-dev}
+% \github{github.com/ethanhu-dev}
 
 \makeatother
 
@@ -74,10 +76,7 @@
 %%  HEADER
 %%------------------------------------------------
 
-%% Print Page Header
-%% [1]: {<numberColumns>}
-
-\printcvheader{1}
+\cvheader
 
 %%----------------------------------------------------------
 %%  EDUCATION
@@ -107,9 +106,9 @@
   %% Skills Section Format
   %% [4]: {<jobName>} {<jobDates>} {<jobRole>} {<jobLocation>}
 
-  \descitem[Languages] C, C++, CSS, HTML, Java, JavaScript, Python, SQL
-  \descitem[Databases] MongoDB, MySQL, Oracle Database, PostgreSQL
-  \descitem[Utilities] AWS, Android Studio, Bootstrap, Git, Node.js
+  \descitem[Languages] C, C++, JavaScript,, CSS, HTML, Java,  Python, SQL
+  \descitem[Databases] MySQL, MongoDB, Oracle Database, PostgreSQL
+  \descitem[Utilities] AWS, Node.js, Git, Android Studio, Bootstrap
 
 \end{cvsection}
 
