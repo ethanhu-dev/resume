@@ -1,5 +1,7 @@
-## My Resume
+## Resume
 
-Use my template on [Overleaf](https://www.overleaf.com/latex/templates/cv-template/bkkwmxvnxgtq)
+My personal resume, built and compiled in LuaLaTeX.
 
-![Resume Preview](ehu_cv.png)
+Use my template on [Overleaf!](https://www.overleaf.com/latex/templates/cv-template/bkkwmxvnxgtq)
+
+![Resume Preview](ehu_cv.png) asds
