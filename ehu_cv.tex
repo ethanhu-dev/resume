@@ -1,0 +1,230 @@
+% !TeX root = ehu_cv.tex
+%%------------------------------------------------------------------------------
+%%
+%%  CV In LaTeX
+%%  Author: Ethan Hu
+%%  Name: 'ehu_cv.tex'
+%%  Requires 'cv_template.cls'
+%%  Compiler: LuaLaTeX
+%%  Last Updated: 2021/08/16
+%%
+%%------------------------------------------------------------------------------
+
+%% USAGE:
+%%
+%% Requires 'cv_template.cls' in same directory
+%% On Overleaf, click Menu in top left, change Compiler to 'LuaLaTeX'
+%% Options below in key=value form, if value not specified value=(default)
+%%
+%% \documentclass[OPTIONS]{cv_template}
+%%
+%%  Example:
+%%      \documentclass[fit,fstyle=arial]{cv_template}
+
+%% OPTIONS:
+%%
+%% Margins:
+%%  marg: document margins for all sides
+%%      usage: marg=(0.5in),1in,1.5in
+%%
+%% Icons:
+%%  icon: toggle header icons
+%%      usage: icon=(true),false
+%%
+%% Fonts:
+%%  fstyle: font style, uses fontspec fonts
+%%      usage: fstyle=(cormorantgaramond),timesnewroman,arial
+%%                    calibri,cambria,georgia,garamond,roboto
+%%
+%% Page Auto-fit:
+%%  fit: toggle auto-fit text to page function
+%%      usage: fit=(true),false
+%%
+%%  frame: toggle visible box where text will be fit, requires 'fit' be on
+%%      usage: frame=(false),true
+%%
+%% Color Links:
+%%  link: toggle URL/links colors
+%%      usage: link=(false),true
+
+\documentclass[]{cv_template}
+
+%%--------------------------------------------------------------------
+%%  RESUME START
+%%--------------------------------------------------------------------
+
+\begin{document}
+
+%%----------------------------------------------------------
+%%  HEADER
+%%----------------------------------------------------------
+
+\begin{cv}
+
+\begin{cvheader}
+{Ethan Hu}
+{(408) 724-7453}
+{ethu@ucsc.edu}
+{github.com/ethanhu-dev}
+{}
+{linkedin.com/in/ethu}
+\end{cvheader}
+
+%%----------------------------------------------------------
+%%  NOTABLE
+%%----------------------------------------------------------
+
+\begin{cvsection}{Notable}
+
+\item[]\begin{tabu}to\textwidth{X[l]X[l]X[l]}%
+{\bf\scshape Python Cloud Shopping Bot}&{\bf\scshape AWS Certified Cloud Practitioner}&{\bf\scshape Website Design}\\
+Created an online shopping bot that is capable.. & Designed and hosted a web server using AWS  & Created some other app that is notable%
+\end{tabu}
+
+\end{cvsection}
+
+%%----------------------------------------------------------
+%%  EDUCATION
+%%----------------------------------------------------------
+
+\begin{cvsection}{Education}
+
+%%------------------------------------------------
+
+\begin{cvsubsection}
+{University of California, Santa Cruz}{June 2021}{Bachelor of Science, B.S. in Computer Science}{Santa Cruz, CA}
+
+\listitem[] Coursework -- Data Structures, Database Systems, Computer Networks, Data Mining, Linear Programming, Computer Program Structures, Discrete Mathematics, Linear Algebra, Ordinary Differential Equations
+
+\end{cvsubsection}
+
+\end{cvsection}
+
+%%----------------------------------------------------------
+%%  SKILLS
+%%----------------------------------------------------------
+
+\begin{cvsection}{Skills}
+
+\descitem[Languages] JavaScript, HTML, CSS, Python, C, C++, Java, SQL
+\descitem[Databases] MySQL, MariaDB, MongoDB, Oracle Database, PostgreSQL
+\descitem[Utilities] AWS Certified Cloud, Node.js, Git, Android Studio, Bootstrap
+
+\end{cvsection}
+
+%%----------------------------------------------------------
+%%  EXPERIENCE
+%%----------------------------------------------------------
+
+\begin{cvsection}{Experience}
+
+%%------------------------------------------------
+
+\begin{cvsubsection}
+{UC Santa Cruz Engineering Department}{March 2021 -- June 2021}{CSE175 Lead}{Santa Cruz, CA}
+
+\listitem Facilitated a group of 20+ students in a real-world consulting project that aimed to increase customer reach and improve existing services for a local organization, the Santa Cruz Mountains Art Center
+\listitem Developed the prototype of a new application for the organization using Java and Kotlin that allowed artists and teachers to connect with potential students
+
+\end{cvsubsection}
+
+%%------------------------------------------------
+
+\begin{cvsubsection}
+{ON Semiconductor}{July 2019 -- September 2019}{Software and Operations Intern}{San Jose, CA}
+
+\listitem Eliminated the need for having to manually input new entries into company database servers by using Python and MySQL to automatically update the records in the server at a set interval
+\listitem Built a program using Python that could create accurate extrapolated visualizations from any data by performing multiple regression algorithms and picking the best result; presented to Quantenna executives in a board meeting for analysis of patterns, trends, and expected future outcomes
+
+\end{cvsubsection}
+
+%%------------------------------------------------
+
+\begin{cvsubsection}
+{ViaBot Inc. Robotics Startup}{June 2018 -- August 2018}{Software Engineer Intern}{Palo Alto, CA}
+
+\listitem Designed a framework for the graphical interface of the RUNO autonomous sweeper robot using Bootstrap and HTML to enable robot remote operation
+\listitem Improved the consistency and accuracy of the robot's autonomous navigation capabilities by performing both real-life and remote trial runs and adjusting the Python code of its sonar sensors and GPS tracking system accordingly
+
+\end{cvsubsection}
+
+%%------------------------------------------------
+
+\end{cvsection}
+
+%%----------------------------------------------------------
+%%  PROJECTS
+%%----------------------------------------------------------
+
+\begin{cvsection}{Projects}
+
+%%------------------------------------------------
+
+\begin{cvsubsection}
+{Overleaf LaTeX Templates}{LaTeX}{August 2021}{}
+
+\listitem Designed and published resume template in LaTeX with function that stretched or scaled resume to single page
+
+\end{cvsubsection}
+
+%%------------------------------------------------
+
+\begin{cvsubsection}
+{AWS Web Development}{JavsaScript, Node.js, PHP}{August 2021}{}
+
+\listitem Developed an online shopping bot using Python and Selenium thatcould autonomously navigate through a store web page, add chosen items tocart, and check out with auto-fill features
+
+\end{cvsubsection}
+
+%%------------------------------------------------
+
+\begin{cvsubsection}
+{BetterDiscord Plugins}{JavaScript, Node.js}{June 2021}{}
+
+\listitem Designed plugins for the communications platform Discord using JavaScript and Node.js that gave users more options and features
+\listitem These plugins granted users increased customization of the user interface, such as the ability to show, move, or hide certain UI sections and toggle game or activity status
+
+\end{cvsubsection}
+
+%%------------------------------------------------
+
+\begin{cvsubsection}
+{Online Shopping Bot}{Python, Selenium}{May 2021}{}
+
+\listitem Developed an online shopping bot using Python and Selenium that could autonomously navigate through a store web page, add chosen items to cart, and check out with auto-fill features
+
+\end{cvsubsection}
+
+%%------------------------------------------------
+
+% \begin{cvsubsection}
+% {Reddit vs. GameStop Sentiment Analyzer}{Python, JSON}{March 2021}{}
+
+% \listitem  Developed an analyzation tool that aimed to reveal any trends between Reddit posts and GameStop share price by parsing through Reddit post history in the form of a JSON dictionary to evaluate common words and phrases
+% \listitem  Applied the VADER sentiment analysis algorithm using Python to determine if overall attitude towards GameStop on Reddit affected its share price
+
+% \end{cvsubsection}
+
+%%------------------------------------------------
+
+\begin{cvsubsection}
+{Android Calculator Application}{Java, XML}{January 2019}{}
+
+\listitem Created a calculator application for the Android platform using Java in Android Studio that is capable of performing basic and scientific mathematical functions and equations
+\listitem Designed an interactive interface using XML to provide a clean and concise layout for the application
+
+\end{cvsubsection}
+
+%%------------------------------------------------
+
+\end{cvsection}
+
+%%----------------------------------------------------------
+
+\end{cv}
+
+%%--------------------------------------------------------------------
+
+\end{document}
+
+%%------------------------------------------------------------------------------
