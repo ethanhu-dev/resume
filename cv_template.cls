@@ -128,7 +128,6 @@
 \hypersetup{
   allcolors=DarkBlue,
   pdfpagelayout=SinglePage,
-  pdfpagemode=FullScreen,
   pdfdisplaydoctitle,
   pdfstartview=Fit,
   pdflang={en-US},
