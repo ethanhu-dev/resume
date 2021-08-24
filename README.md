@@ -9,4 +9,5 @@ Use my template on [Overleaf](https://www.overleaf.com/latex/templates/cv-templa
 * ehu_cv.tex - My resume TeX file
 * my_cv.tex - Sample resume TeX file
 
+#### Preview
 ![Resume Preview](ehu_cv.png)
