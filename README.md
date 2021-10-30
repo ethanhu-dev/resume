@@ -10,4 +10,4 @@ Use my template on [Overleaf](https://www.overleaf.com/latex/templates/cv-templa
 * my_cv.tex - Sample resume TeX file
 
 #### Preview
-![resume](ehu_cv-1.png)
+![resume](/res/ehu_cv-1.png)
