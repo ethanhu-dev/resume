@@ -47,7 +47,7 @@
 %%  link: toggle URL/links colors
 %%      usage: link=(false),true
 
-\documentclass[11pt]{cv_template}
+\documentclass[11pt,fit=false]{cv_template}
 
 %%--------------------------------------------------------------------
 %%  RESUME START
@@ -64,7 +64,7 @@
 \begin{cvheader}
 {Ethan Hu}
 {(408) 724-7453}
-{ethu@ucsc.edu}
+{ethanhu99@gmail.com}
 {github.com/ethanhu99}
 {}
 {linkedin.com/in/ethu}
@@ -106,9 +106,9 @@
 
 \begin{cvsection}{Skills}
 
-\descitem[Languages] JavaScript, HTML, CSS, Python, C, C++, Java, SQL
-\descitem[Databases] MySQL, MariaDB, MongoDB, Oracle Database, PostgreSQL
-\descitem[Utilities] AWS Certified Cloud, Node.js, Git, Android Studio, Bootstrap
+\descitem[Languages] C/C++, C\#, Java, JavaScript, HTML, CSS, Python, SQL
+\descitem[Databases] MySQL, MongoDB, Oracle Database, PostgreSQL, MariaDB
+\descitem[Utilities] AWS, Unity, React, Node.js, Android Studio, Bootstrap
 
 \end{cvsection}
 
@@ -121,20 +121,26 @@
 %%------------------------------------------------
 
 \begin{cvsubsection}
-{UC Santa Cruz Engineering Department}{March 2021 -- June 2021}{CSE175 Lead}{Santa Cruz, CA}
+{UC Santa Cruz Engineering Department}{March 2021 -- June 2021}{CSE175 Teaching Assistant}{Santa Cruz, CA}
 
-\listitem Facilitated a group of 20+ students in a real-world consulting project that aimed to increase customer reach and improve existing services for a local organization, the Santa Cruz Mountains Art Center
-\listitem Developed the prototype of a new application for the organization using Java and Kotlin that allowed artists and teachers to connect with potential students
+\listitem Facilitated a group of 20+ students in a real-world engineering project that applied programming skills to improve existing services for a local arts center
+\listitem Organized students into scrum teams that worked on separate parts of the project with weeklong sprints over the 10-week quarter
+\listitem Developed the prototype of a new phone app using Java and Kotlin that would increase customer reach by allowing the arts center teachers to connect with more potential students
+
 
 \end{cvsubsection}
 
 %%------------------------------------------------
 
 \begin{cvsubsection}
-{ON Semiconductor}{July 2019 -- September 2019}{Software and Operations Intern}{San Jose, CA}
+{ON Semiconductor}{July 2019 -- September 2019}{Software and Data Intern}{San Jose, CA}
 
-\listitem Eliminated the need for having to manually input new entries into company database servers by using Python and MySQL to automatically update the records in the server at a set interval
-\listitem Built a program using Python that could create accurate extrapolated visualizations from any data by performing multiple regression algorithms and picking the best result; presented to Quantenna executives in a board meeting for analysis of patterns, trends, and expected future outcomes
+\listitem Extracted and transformed data from various sources using data staging tools to load them into databases
+\listitem Cleaned database entries to set them up for reports and visualizations using SQL to filter, format, and select the relevant data
+\listitem Automated data reports by using Python and R to connect the appropriate data to data visualization tools for clear presentation
+% \listitem Eliminated the need for having to manually input new entries into company database servers by using Python and MySQL to automatically update the records in the server at a set interval
+% \listitem Built a program using Python that could create accurate extrapolated visualizations from any data by performing multiple regression algorithms and picking the best result; presented to Quantenna executives in a board meeting for analysis of patterns, trends, and expected future outcomes
+% \listitem Debugged database by revising spreadsheet formulas to present more accurate predicti
 
 \end{cvsubsection}
 
@@ -143,8 +149,8 @@
 \begin{cvsubsection}
 {ViaBot Inc.}{June 2018 -- August 2018}{Software Engineer Intern}{Palo Alto, CA}
 
-\listitem Designed a framework for the graphical interface of the RUNO autonomous sweeper robot using Bootstrap and HTML to enable robot remote operation
-\listitem Improved the consistency and accuracy of the robot's autonomous navigation capabilities by performing both real-life and remote trial runs and adjusting the Python code of its sonar sensors and GPS tracking system accordingly
+\listitem Designed an interactive user interface using Bootstrap and HTML for the control panel of an autonomous multi-function robot
+\listitem Optimized the accuracy of the robot's sensors for autonomous navigation using C++ on its Arduino board
 
 \end{cvsubsection}
 
@@ -161,59 +167,87 @@
 %%------------------------------------------------
 
 \begin{cvsubsection}
-{AWS Website Development}{JavsaScript, Node.js, PHP}{October 2021}{}
+{Unity 2D Game}{C++, C\#}{May 2022}{}
 
-\listitem Created a template for website creation using multiple AWS technologies and services including CloudFormation, CloudFront, Elastic Computing (EC2), and Serverless Application Model (SAM)
-
-\end{cvsubsection}
-
-%%------------------------------------------------
-
-\begin{cvsubsection}
-{BetterDiscord UI Plugins}{JavaScript, Node.js}{September 2021}{}
-
-\listitem Designed plugins for the communications platform Discord using JavaScript and Node.js that gave users more options and features
-\listitem Granted users increased customization of the user interface, such as the ability to show, move, or hide certain UI sections and toggle game or activity status
+\listitem Developed a 2D platformer game by designing dynamic controls for the player with an adversial AI
+% \listitem Animated all sprites with accompanying controls and movements for fluid gameplay
+\listitem Implemented game functionality through C++ and C\# scripts that linked the sprites with accompanying controls and animations
+\listitem Encompassed the game with a user interface for navigation between game
+menus, leaderboards, and other displays
 
 \end{cvsubsection}
+
 
 %%------------------------------------------------
 
 % \begin{cvsubsection}
-% {Overleaf LaTeX Templates}{LaTeX}{August 2021}{}
+% {Custom 3D Printer Firmware}{C/C++}{February 2022}{}
 
-% \listitem Designed and published resume template in LaTeX with function that automatically scaled all contents to a single page
+% \listitem Adapted Marlin firmware package for use on personal 3D printer that includes customizable user interface and menu options
 
 % \end{cvsubsection}
 
 %%------------------------------------------------
 
 \begin{cvsubsection}
-{Online Shopping Bot}{Python, Selenium}{May 2021}{}
+{Personal Website}{JavaScript, HTML, Node.js}{October 2021}{}
 
-\listitem Developed an online shopping bot using Python and Selenium that could autonomously navigate through a store web page, add chosen items to cart, and check out with auto-fill features
+% \listitem Created a template for website creation using multiple AWS technologies and services including CloudFormation, CloudFront, Elastic Computing (EC2), and Serverless Application Model (SAM)
+\listitem Created personal websites with different links and pages using static buckets and Linux virtual instances hosted on AWS
+\listitem Added CI/CD pipelines to automatically update the site contents when changes have been pushed to their respective GitHub repositories
+
+\end{cvsubsection}
+
+%%------------------------------------------------
+
+\begin{cvsubsection}
+{Discord UI Plugins}{JavaScript, Node.js}{September 2021}{}
+
+\listitem Developed plugins for the VoIP platform Discord that allowed users to customize their client in various ways
+% \listitem Granted users increased customization of the user interface, such as the ability to show, move, or hide certain UI sections and toggle game or activity status
+\listitem Designed buttons and icons for the display and control of the user interface using the BetterDiscord library
+% \listitem Toggle Status - Adds a button that switches user game activity status on or off
+% \listitem Hide Side Bars - Adds a button that hides the left side bar in the client
 
 \end{cvsubsection}
 
 %%------------------------------------------------
 
 % \begin{cvsubsection}
-% {Reddit vs. GameStop Sentiment Analyzer}{Python, JSON}{March 2021}{}
+% {LaTeX Templates}{LaTeX}{August 2021}{}
 
-% \listitem  Developed an analyzation tool that aimed to reveal any trends between Reddit posts and GameStop share price by parsing through Reddit post history in the form of a JSON dictionary to evaluate common words and phrases
-% \listitem  Applied the VADER sentiment analysis algorithm using Python to determine if overall attitude towards GameStop on Reddit affected its share price
+% \listitem Designed and published resume template in LaTeX with scripts and settings that automatically adjusts spacing and text size to aesthetically fill out a single page
+
+% \end{cvsubsection}
+
+%%------------------------------------------------
+
+% \begin{cvsubsection}
+% {Online Shopping Bot}{Python, Selenium}{May 2021}{}
+
+% \listitem Developed an online shopping bot using Python and Selenium that could autonomously navigate through a store web page, add chosen items to cart, and check out with auto-fill features
 
 % \end{cvsubsection}
 
 %%------------------------------------------------
 
 \begin{cvsubsection}
-{Android Calculator Application}{Java, XML}{January 2019}{}
+{Reddit Sentiment Analyzer}{Python, JavaScript}{March 2021}{}
 
-\listitem Created a calculator application for the Android platform using Java in Android Studio that is capable of performing basic and scientific mathematical functions and equations
-\listitem Designed an interactive interface using XML to provide a clean and concise layout for the application
+\listitem  Built an analyzation tool that parsed through Reddit posts in the form of a JSON dictionary to evaluate correlations between common words and phrases and trends in other data separated by sender and time frame
+\listitem  Applied sentiment analsysis using the vaderSentiment library to determine average attitude displayed in those posts
 
 \end{cvsubsection}
+
+%%------------------------------------------------
+
+% \begin{cvsubsection}
+% {Android Calculator Application}{Java, XML}{January 2019}{}
+
+% \listitem Created a calculator application for the Android platform using Java in Android Studio that is capable of performing basic and scientific mathematical functions and equations
+% \listitem Designed an interactive interface using XML to provide a clean and concise layout for the application
+
+% \end{cvsubsection}
 
 %%------------------------------------------------
 
